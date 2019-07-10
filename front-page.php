@@ -46,7 +46,7 @@ get_header();
 		?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div><!-- #primary. -->
 
 <?php
 get_sidebar();
