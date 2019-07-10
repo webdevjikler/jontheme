@@ -126,6 +126,26 @@ function jontheme_scripts() {
 
 	wp_enqueue_script( 'jontheme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	// Подклчаем шрифты начало
+		wp_register_style('et-googleFonts', '//fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&amp;subset=cyrillic');
+		wp_enqueue_style( 'et-googleFonts');
+		// Подклчаем шрифты конец
+
+		// Подключаем стили начало
+		wp_enqueue_style( 'bootstrap-grid', get_stylesheet_directory_uri() . '/assets/css/bootstrap-grid.min.css' );
+		// Подключаем стили конец
+
+		// Подключаем скрипты начало
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', '//code.jquery.com/jquery-3.3.1.min.js' );
+		wp_enqueue_script( 'jquery' );
+
+		wp_enqueue_script( 'slick', get_stylesheet_directory_uri() . '/assets/slick/slick.min.js', array('jquery'), null,true);
+		wp_enqueue_script( 'fancybox-3.2.11', get_stylesheet_directory_uri() . '/assets/js/fancybox-3.2.11.js', array(), null,true);
+		wp_enqueue_script( 'jquery.maskedinput', get_stylesheet_directory_uri() . '/assets/js/jquery.maskedinput.js', array(), null,true);
+		wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/assets/js/script.js', array(), null,true);
+		// Подключаем скрипты конец
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -158,4 +178,11 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+// add favicon png start
+function my_favicon() {
+	echo '<link rel="icon" type="image/png" href="'.get_stylesheet_directory_uri('wpurl').'/assets/images/favicon.png" />';
+}
+add_action('wp_head', 'my_favicon');
+// add favicon png end
 
